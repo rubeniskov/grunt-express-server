@@ -1,0 +1,26 @@
+{
+  "name": "grunt-express-server",
+  "version": "1.0.0",
+  "description": "Start a connect web server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4.0"
+  },
+  "keywords": [
+    "gruntplugin",
+    "server",
+    "express",
+    "http"
+  ],
+  "files": [
+    "tasks"
+  ]
+}
