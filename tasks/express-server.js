@@ -27,8 +27,6 @@ module.exports = function(grunt) {
                 livereload: false,
                 open: false,
                 useAvailablePort: false,
-                onCreateServer: null,
-                // if nothing passed, then is set below 'middleware = createDefaultMiddleware.call(this, connect, options);'
                 middleware: null
             });
 
