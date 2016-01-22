@@ -34,6 +34,20 @@ module.exports = function(grunt) {
             grunt.fatal('protocol option must be \'http\' or \'https\'');
         }
 
+        if (grunt.option('debug') || options.debug === true) {
+            morgan.format('grunt', [
+                    'HTTP/:http-version'.magenta,
+                    '<--'.green,
+                    ':status'.yellow,
+                    '\':method :url\''.green,
+                    ':res[content-length]'.yellow,
+                    'bytes',
+                    ':response-time'.yellow,
+                    'ms'
+                ].join(' '));
+            app.use(morgan('grunt'));
+        }
+
         options.hostname = options.hostname === '*' ? '' : options.hostname;
 
         options.port = options.port === '?' ? 0 : options.port;
@@ -42,15 +56,10 @@ module.exports = function(grunt) {
             (options.middleware.call && options.middleware.call(this, app, options)) ||
             (options.middleware.join && options.middleware.join([], options.middleware))) || [];
 
-        if (grunt.option('debug') || options.debug === true) {
-            morgan.format('grunt', ('[D] server :method :url :status ' +
-                ':res[content-length] - :response-time ms').magenta);
-            options.middleware.unshift(morgan('grunt'));
-        }
-
         options.middleware.forEach(function(middleware) {
             app.use.apply(app, util.isArray(middleware) ? middleware : [middleware]);
         });
+        
         require(options.protocol).createServer.apply(this, (options.protocol === 'https' ? [{
             key: options.key || grunt.file.read(path.join(__dirname, 'certs', 'server.key')).toString(),
             cert: options.cert || grunt.file.read(path.join(__dirname, 'certs', 'server.crt')).toString(),
@@ -69,6 +78,6 @@ module.exports = function(grunt) {
                 }
             });
 
-        options.keepalive && grunt.log.write('Waiting forever...\n');
+        options.keepalive && grunt.log.writeln('Waiting forever...\n');
     });
 };
