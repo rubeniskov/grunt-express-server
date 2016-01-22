@@ -1,12 +1,37 @@
 {
   "name": "grunt-express-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Start a connect web server",
+  "keywords": [
+    "node",
+    "udo",
+    "server",
+    "front-end",
+    "development",
+    "static"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Rubén López Gómez",
+    "email": "rubeniskov@gmail.com",
+    "url": "https://twitter.com/Rubeniskov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://pdihub.hi.inet/rlg245/grunt-express-server.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://pdihub.hi.inet/rlg245/grunt-express-server/blob/master/LICENSE.md"
+    }
+  ],
+  "bugs": {
+    "url": "https://pdihub.hi.inet/rlg245/grunt-express-server/issues"
+  },
+  "homepage": "https://pdihub.hi.inet/rlg245/grunt-express-server",
   "dependencies": {
     "express": "^4.13.3",
     "morgan": "^1.6.1"
